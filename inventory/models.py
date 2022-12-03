@@ -29,3 +29,14 @@ class Product(models.Model):
 class Stock(models.Model):
     units = models.BigIntegerField()
     product = models.OneToOneField(Product, on_delete=models.CASCADE)
+
+class ProductTwo(models.Model):
+    name = models.CharField(max_length=10)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+    data_added = models.DateTimeField(auto_now_add=True)
+    data_updated = models.DateTimeField(auto_now=True)
+    urls = models.SlugField()
+    is_active = models.BooleanField()
+
+    def __str__(self) -> str:
+        return self.name
